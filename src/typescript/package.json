@@ -1,0 +1,53 @@
+{
+  "name": "ipyvue-time-series",
+  "version": "0.1.0",
+  "description": "Real-Time Data Plotting in Jupyter",
+  "author": "Julian Rüth",
+  "main": "lib/index.js",
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saraedum/ipyvue-time-series.git"
+  },
+  "keywords": [
+    "jupyter",
+    "widgets",
+    "ipython",
+    "ipywidgets",
+    "jupyterlab-extension",
+    "plotly",
+    "vuejs"
+  ],
+  "files": [
+    "dist/jupyterlab/index.js"
+  ],
+  "scripts": {
+    "clean": "rimraf dist/ ../python/generated/notebook/javascript",
+    "build": "concurrently \"npm:build:notebook\" \"npm:build:jupyterlab\"",
+    "build:notebook": "webpack --config webpack.notebook.conf.js --mode production",
+    "build:jupyterlab": "webpack --config webpack.jupyterlab.conf.js --mode production"
+  },
+  "devDependencies": {
+    "@jupyterlab/apputils": "^2.0.0",
+    "@lumino/application": "^1.6.0",
+    "@lumino/widgets": "^1.6.0",
+    "concurrently": "^5.2.0",
+    "rimraf": "^3.0.2",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.5",
+    "webpack": "^4.22.0",
+    "webpack-bundle-analyzer": "^3.8.0",
+    "webpack-cli": "^3.1.2"
+  },
+  "peerDependencies": {
+    "@jupyterlab/apputils": "^2.0.0",
+    "@lumino/application": "^1.6.0",
+    "@lumino/widgets": "^1.6.0"
+  },
+  "dependencies": {
+    "@jupyter-widgets/base": "^1.1.0 || ^2 || ^3"
+  },
+  "jupyterlab": {
+    "extension": "dist/jupyterlab/index"
+  }
+}
