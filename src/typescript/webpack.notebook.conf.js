@@ -1,5 +1,6 @@
 const path = require('path');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const setup = {
     // This bundle contains the part of the JavaScript that is run on
@@ -31,14 +32,24 @@ const widget = {
             use: ['style-loader', 'css-loader'],
         }, {
             test: /\.ts$/,
-            use: ['ts-loader'],
+            use: [{
+                loader: 'ts-loader',
+                options: {
+                    appendTsSuffixTo: [/\.vue$/],
+                },
+            }],
+        }, {
+            test: /\.vue$/,
+            use: ['vue-loader'],
         }]
     },
     externals: [
-        '@jupyter-widgets/base'
+        '@jupyter-widgets/base',
+        /^@jupyterlab\/.+$/,
     ],
     plugins: [
-        new BundleAnalyzerPlugin({ analyzerMode: 'static' })
+        // new BundleAnalyzerPlugin({ analyzerMode: 'static' }),
+        new VueLoaderPlugin(),
     ],
 };
 

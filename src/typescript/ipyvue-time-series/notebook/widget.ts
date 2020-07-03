@@ -1,5 +1,6 @@
-import Model from "../model.ts";
-import View from "../view.ts";
 import { version } from "../../package.json";
+import activate from "../activate";
 
-export { Model, View, version };
+export { version };
+
+activate();

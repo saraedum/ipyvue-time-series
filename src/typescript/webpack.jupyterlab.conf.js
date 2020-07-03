@@ -18,6 +18,7 @@ const plugin = {
         /^@lumino\/.+$/,
         /^@jupyterlab\/.+$/,
         '@jupyter-widgets/base',
+        'vue',
     ],
     module: targets[1].module,
     plugins: targets[1].plugins,
