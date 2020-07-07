@@ -27,6 +27,7 @@ Install with pip:
 Build JavaScript assets:
 
     $ cd src/typescript
+    $ yarn
     $ yarn build:notebook
 
 Then, install with pip:
@@ -52,6 +53,7 @@ Make sure that you have the `@jupyter-widgets/jupyterlab-manager` installed:
 Build JavaScript assets and install the JupyterLab extension:
 
     $ cd src/typescript
+    $ yarn
     $ yarn build:jupyterlab
     $ jupyter labextension install .
 
