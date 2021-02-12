@@ -1,5 +1,5 @@
 import { version } from "../../package.json";
-import activate from "../activate";
+import activate from "../activate.ts";
 
 export { version };
 
