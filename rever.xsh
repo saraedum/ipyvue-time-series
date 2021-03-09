@@ -16,7 +16,7 @@ $ACTIVITIES = [
 
 $VERSION_BUMP_PATTERNS = [
     ('ipyvue_time_series/__init__.py', r'__version__ = ', r'__version__ = "$VERSION"'),
-    ('ipyvue_time_series/__init__.py', r'version_info =', f'version_info = {tuple(int(x) for x in $VERSION.split(".")}'),
+    ('ipyvue_time_series/__init__.py', r'version_info =', f'version_info = {tuple(int(x) for x in $VERSION.split("."))}'),
     ('js/package.json', r'  "version": ', r'  "version": "$VERSION",'),
     ('setup.py', r'    version=', r'    version="$VERSION",'),
 ]
