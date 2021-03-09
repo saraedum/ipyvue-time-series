@@ -1,0 +1,13 @@
+*.egg-info/
+.ipynb_checkpoints/
+dist/
+build/
+*.py[cod]
+node_modules/
+
+# Compiled javascript
+ipyvue_time_series/nbextension/
+ipyvue_time_series/labextension/
+
+# OS X
+.DS_Store

@@ -1,67 +1,30 @@
-# ipyvue-time-series
+ipyvue-time-series
+===============================
 
-Real-Time Data Plotting in Jupyter
+Real-Time Plots in Jupyter Notebooks and JupyterLab
 
-## Installation
+Installation
+------------
 
-### Classical Jupyter Notebook
-
-Install with pip:
-
-    $ pip install ipyvue_time_series
-    $ jupyter nbextension enable --py --sys-prefix ipyvue_time_series
-
-### Jupyter Lab
-
-Make sure that you have the `@jupyter-widgets/jupyterlab-manager` installed:
-
-    $ jupyter labextension install @jupyter-widgets/jupyterlab-manager
-
-Install with pip:
+To install use pip:
 
     $ pip install ipyvue_time_series
-    $ jupyter labextension install ipyvue_time_series
 
-### Development with the Jupyter Notebook
+For a development installation (requires [Node.js](https://nodejs.org) and [Yarn version 1](https://classic.yarnpkg.com/)),
 
-Build JavaScript assets:
-
-    $ cd src/typescript
-    $ yarn
-    $ yarn build:notebook
-
-Then, install with pip:
-
-    $ cd ../python
+    $ git clone https://github.com/saraedum/ipyvue-time-series.git
+    $ cd ipyvue-time-series
     $ pip install -e .
-
-Enable the extension:
-
-    $ jupyter nbextension install --py --symlink --sys-prefix ipyvue_time_series
+    $ jupyter nbextension install --py --symlink --overwrite --sys-prefix ipyvue_time_series
     $ jupyter nbextension enable --py --sys-prefix ipyvue_time_series
 
-The Python bits should now update automatically when you restart the kernel, to
-update the JavaScript, run `yarn build notebook` again, or `yarn build notebook
---watch` to rebuild automatically.
+When actively developing your extension for JupyterLab, run the command:
 
-### Development with Jupyter Lab
+    $ jupyter labextension develop --overwrite ipyvue_time_series
 
-Make sure that you have the `@jupyter-widgets/jupyterlab-manager` installed:
+Then you need to rebuild the JS when you make a code change:
 
-    $ jupyter labextension install @jupyter-widgets/jupyterlab-manager
+    $ cd js
+    $ yarn run build
 
-Build JavaScript assets and install the JupyterLab extension:
-
-    $ cd src/typescript
-    $ yarn
-    $ yarn build:jupyterlab
-    $ jupyter labextension install .
-
-Then, install the Python backend with pip:
-
-    $ cd ../python
-    $ pip install -e .
-
-To rebuild the frontend code automatically, run `yarn build jupyterlab
---watch`. To have JupyterLab rebuild whenever that frontend build changes,
-start JupyterLab with `--watch`.
+You then need to refresh the JupyterLab page when your javascript changes.

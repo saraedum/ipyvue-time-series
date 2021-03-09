@@ -13,7 +13,7 @@ if (window.require) {
     window.require.config({
         map: {
             "*" : {
-                "ipyvue-time-series": "nbextensions/ipyvue-time-series/widget",
+                "ipyvue-time-series": "nbextensions/ipyvue-time-series/index",
             }
         }
     });
