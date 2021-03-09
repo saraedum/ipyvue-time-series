@@ -11,3 +11,5 @@ ipyvue_time_series/labextension/
 
 # OS X
 .DS_Store
+
+/rever
