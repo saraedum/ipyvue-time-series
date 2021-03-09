@@ -2,11 +2,11 @@
 async function commReady(widget_manager) {
   if (widget_manager.context) {
     // JupyterLab
-	  const context = widget_manager.context;
-	  await context.ready;
+    const context = widget_manager.context;
+    await context.ready;
 
-	  const sessionContext = context.sessionContext;
-	  await sessionContext.ready;
+    const sessionContext = context.sessionContext;
+    await sessionContext.ready;
   }
 }
 
@@ -15,8 +15,8 @@ async function commReady(widget_manager) {
 function registerCommTarget(widget_manager, target, callback) {
   if (widget_manager.context) {
     // JupyterLab
-	  const context = widget_manager.context;
-	  const sessionContext = context.sessionContext;
+    const context = widget_manager.context;
+    const sessionContext = context.sessionContext;
     const kernel = sessionContext.session.kernel;
 
     return new Promise((accept) => {
@@ -29,7 +29,7 @@ function registerCommTarget(widget_manager, target, callback) {
     // Classic Notebook
     return new Promise((accept) => {
       widget_manager.comm_manager.register_target(target, (comm) => {
-		    comm.on_msg(callback);
+        comm.on_msg(callback);
         accept(comm);
       });
     });
@@ -40,8 +40,8 @@ function registerCommTarget(widget_manager, target, callback) {
 function createComm(widget_manager, target) {
   if (widget_manager.context) {
     // JupyterLab
-	  const context = widget_manager.context;
-	  const sessionContext = context.sessionContext;
+    const context = widget_manager.context;
+    const sessionContext = context.sessionContext;
     const kernel = sessionContext.session.kernel;
 
     const comm = kernel.createComm(target);
@@ -54,7 +54,7 @@ function createComm(widget_manager, target) {
 }
 
 export default {
-	// This object is provided by ipyvue's VueView
+  // This object is provided by ipyvue's VueView
   inject: [ 'viewCtx' ],
   render() {},
   async mounted() {
@@ -66,7 +66,7 @@ export default {
     // Create a comm target that the backend can send data to.
     const commTarget = registerCommTarget(model.widget_manager, target, (msg) => this.onMessage(msg));
 
-		// We tell the backend about our comm target.
+    // We tell the backend about our comm target.
     createComm(model.widget_manager, model.attributes.target).send({command: "register", target});
 
     // Wait for the backend to connect to our comm target.
@@ -79,9 +79,9 @@ export default {
   },
   methods: {
     onMessage(message) {
-		  const payload = message.content.data;
-		  this.$emit(payload.command, payload);
-		  this.comm.send({command: "ack"});
+      const payload = message.content.data;
+      this.$emit(payload.command, payload);
+      this.comm.send({command: "ack"});
     },
   }
 }
