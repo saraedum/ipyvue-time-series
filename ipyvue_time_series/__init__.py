@@ -1,21 +1,18 @@
-from ._version import version_info, __version__
+from .time_series import TimeSeries
 
-from .example import *
+
+version_info = (1, 0, 0)
+__version__ = "1.0.0"
 
 
 def _jupyter_labextension_paths():
-    """Called by Jupyter Lab Server to detect if it is a valid labextension and
-    to install the widget
-
-    Returns
-    =======
-    src: Source directory name to copy files from. Webpack outputs generated files
-        into this directory and Jupyter Lab copies from this directory during
-        widget installation
-    dest: Destination directory name to install widget files to. Jupyter Lab copies
-        from `src` directory into <jupyter path>/labextensions/<dest> directory
-        during widget installation
+    r"""
+    Called by JupyterLab to find out which JavaScript assets need to be copied.
     """
+    # The command `jupyter labextension build` creates a package in
+    # labextension/, see jupyterlab.outputDir in js/package.json
+    # These files are copied to extensions/ipyvue-time-series/ in
+    # JupyterLab when this package is pip-installed.
     return [{
         'src': 'labextension',
         'dest': 'ipyvue-time-series',
@@ -23,22 +20,13 @@ def _jupyter_labextension_paths():
 
 
 def _jupyter_nbextension_paths():
-    """Called by Jupyter Notebook Server to detect if it is a valid nbextension and
-    to install the widget
-
-    Returns
-    =======
-    section: The section of the Jupyter Notebook Server to change.
-        Must be 'notebook' for widget extensions
-    src: Source directory name to copy files from. Webpack outputs generated files
-        into this directory and Jupyter Notebook copies from this directory during
-        widget installation
-    dest: Destination directory name to install widget files to. Jupyter Notebook copies
-        from `src` directory into <jupyter path>/nbextensions/<dest> directory
-        during widget installation
-    require: Path to importable AMD Javascript module inside the
-        <jupyter path>/nbextensions/<dest> directory
+    r"""
+    Called by Jupyter Notebook to find out which JavaScript assets need to be copied.
     """
+    # The command `yarn build:prod` creates JavaScript assets in nbextension/.
+    # These files need to be copied to the nbextensions/ipyvue-time-series/
+    # directory in Jupyter Notebook. The entrypoint in these files is
+    # extension.js.
     return [{
         'section': 'notebook',
         'src': 'nbextension',

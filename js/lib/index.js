@@ -1,3 +1,5 @@
-// Export widget models and views, and the npm package version number.
-module.exports = require('./example.js');
-module.exports['version'] = require('../package.json').version;
+const plugin = require('./plugin');
+
+module.exports = { ...plugin };
+
+plugin.activate();

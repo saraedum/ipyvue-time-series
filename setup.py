@@ -9,7 +9,6 @@ from jupyter_packaging import (
     install_npm,
     ensure_targets,
     combine_commands,
-    get_version,
 )
 
 
@@ -21,9 +20,6 @@ log.info('$PATH=%s' % os.environ['PATH'])
 
 name = 'ipyvue_time_series'
 LONG_DESCRIPTION = 'Real-Time Plots in Jupyter Notebooks and JupyterLab'
-
-# Get ipyvue_time_series version
-version = get_version(pjoin(name, '_version.py'))
 
 js_dir = pjoin(here, 'js')
 
@@ -46,12 +42,12 @@ cmdclass['jsdeps'] = combine_commands(
 
 setup_args = dict(
     name=name,
-    version=version,
+    version="1.0.0",
     description='Real-Time Plots in Jupyter Notebooks and JupyterLab',
     long_description=LONG_DESCRIPTION,
     include_package_data=True,
     install_requires=[
-        'ipywidgets>=7.6.0',
+        'ipyvue-remote-component>=1.0.2',
     ],
     packages=find_packages(),
     zip_safe=False,
@@ -67,6 +63,7 @@ setup_args = dict(
     classifiers=[
         'Development Status :: 4 - Beta',
         'Framework :: IPython',
+        "License :: OSI Approved :: MIT License",
         'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
         'Topic :: Multimedia :: Graphics',

@@ -1,12 +1,15 @@
 var path = require('path');
 var version = require('./package.json').version;
 
-// Custom webpack rules are generally the same for all webpack bundles, hence
-// stored in a separate local variable.
 var rules = [
     { test: /\.css$/, use: ['style-loader', 'css-loader']}
 ]
 
+// Note that unfortunately, we cannot declare "vue" an external. JupyterVue
+// bundles all of Vue but does not export all of it again for us. (Not sure if
+// that would even be possible.) So we have to include our own copy.
+// (Otherwise, RequireJS would try to load vue from extensions/vue.js which
+// does not exist.
 
 module.exports = (env, argv) => {
     var devtool = argv.mode === 'development' ? 'source-map' : false;
@@ -26,7 +29,8 @@ module.exports = (env, argv) => {
                 libraryTarget: 'amd',
                 publicPath: '' // publicPath is set in extension.js
             },
-            devtool
+            devtool,
+            externals: ['jupyter-vue'],
         },
         {// Bundle for the notebook containing the custom widget views and models
         //
@@ -45,7 +49,7 @@ module.exports = (env, argv) => {
             module: {
                 rules: rules
             },
-            externals: ['@jupyter-widgets/base']
+            externals: ['@jupyter-widgets/base', 'jupyter-vue'],
         },
         {// Embeddable ipyvue-time-series bundle
         //
@@ -61,7 +65,7 @@ module.exports = (env, argv) => {
         // The target bundle is always `dist/index.js`, which is the path required
         // by the custom widget embedder.
         //
-            entry: './lib/embed.js',
+            entry: './lib/index.js',
             output: {
                 filename: 'index.js',
                 path: path.resolve(__dirname, 'dist'),
@@ -72,7 +76,7 @@ module.exports = (env, argv) => {
             module: {
                 rules: rules
             },
-            externals: ['@jupyter-widgets/base']
+            externals: ['@jupyter-widgets/base', 'jupyter-vue'],
         }
     ];
 }
