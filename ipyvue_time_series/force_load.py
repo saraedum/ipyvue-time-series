@@ -3,7 +3,7 @@ from ipywidgets import DOMWidget
 
 class ForceLoad(DOMWidget):
     r"""
-    RemoteComponent includes this widget to force the `activate()` function in
+    TimeSeries includes this widget to force the `activate()` function in
     the JavaScript part of ipyvue-time-series to run.
 
     We need this to make sure that the `<time-series/>` component gets
