@@ -47,7 +47,7 @@ setup_args = dict(
     long_description=LONG_DESCRIPTION,
     include_package_data=True,
     install_requires=[
-        'ipyvue-remote-component>=1.0.2',
+        'ipyvue-remote-component>=1.1.0',
     ],
     packages=find_packages(),
     zip_safe=False,

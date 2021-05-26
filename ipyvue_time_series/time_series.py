@@ -15,7 +15,7 @@ class TimeSeries(VueTemplate, CommWidget, RemoteComponent):
     __force = Any(force_load, read_only=True).tag(sync=True, **widget_serialization)
     template = Unicode(r"""
     <time-series v-slot="{ x, y }">
-        <remote-component url="https://unpkg.com/vue-plotly@^1/dist/vue-plotly.umd.min.js" :extract="library => library.Plotly" :props="{
+        <remote-component url="https://unpkg.com/vue-plotly@1.1.0/dist/vue-plotly.umd.min.js" integrity="sha384-3YjbENL4Izchmbn7RCdWL5tHYGPP7fy2B/vzCgBd3corbolRfPgjimXK4JEwGpYg" :extract="library => library.Plotly" :props="{
             data: [{ x: [...x], y: [...y], type: 'scatter' }],
             'display-mode-bar': false }" />
     </time-series>
