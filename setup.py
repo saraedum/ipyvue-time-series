@@ -42,7 +42,7 @@ cmdclass['jsdeps'] = combine_commands(
 
 setup_args = dict(
     name=name,
-    version="1.0.0",
+    version="1.0.1",
     description='Real-Time Plots in Jupyter Notebooks and JupyterLab',
     long_description=LONG_DESCRIPTION,
     include_package_data=True,
