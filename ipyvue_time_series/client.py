@@ -22,7 +22,7 @@ class Client:
         r"""
         Send ``data`` to the frontend.
 
-        Raises an except if the client has not sent an ACK for the previous
+        Raises an exception if the client has not sent an ACK for the previous
         data.
         """
         if not self._ready:
