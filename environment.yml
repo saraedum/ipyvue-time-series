@@ -1,0 +1,10 @@
+name: ipyvue-time-series-build
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - jupyter-packaging
+  - jupyterlab
+  - pip
+  - rever
+  - twine
