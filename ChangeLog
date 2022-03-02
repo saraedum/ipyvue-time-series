@@ -4,6 +4,15 @@ ipyvue-time-series Change Log
 
 .. current developments
 
+v1.0.2
+====================
+
+**Fixed:**
+
+* Upgraded JavaScript dependencies for latest security fixes.
+
+
+
 v1.0.1
 ====================
 
