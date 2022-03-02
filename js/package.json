@@ -1,6 +1,6 @@
 {
   "name": "ipyvue-time-series",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Real-Time Plots in Jupyter Notebooks and JupyterLab",
   "author": "Julian Rüth",
   "main": "lib/index.js",

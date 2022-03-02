@@ -1,8 +1,8 @@
 from .time_series import TimeSeries
 
 
-version_info = (1, 0, 1)
-__version__ = "1.0.1"
+version_info = (1, 0, 2)
+__version__ = "1.0.2"
 
 
 def _jupyter_labextension_paths():
